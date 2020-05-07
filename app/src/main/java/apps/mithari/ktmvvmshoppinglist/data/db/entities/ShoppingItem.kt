@@ -1,4 +1,4 @@
-package apps.mithari.ktmvvmshoppinglist
+package apps.mithari.ktmvvmshoppinglist.data.db.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,9 +1,10 @@
-package apps.mithari.ktmvvmshoppinglist
+package apps.mithari.ktmvvmshoppinglist.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import apps.mithari.ktmvvmshoppinglist.data.db.entities.ShoppingItem
 
 @Database(entities = [ShoppingItem::class], version = 1)
 abstract class ShoppingDatabase : RoomDatabase() {
@@ -23,8 +24,13 @@ abstract class ShoppingDatabase : RoomDatabase() {
 
         //        this invoke function means is will be called by default when the class object is made
 //        as we are companion object it can be called with parent ShoppingDatabase()
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: createDatabase(context).also { instance = it }
+        operator fun invoke(context: Context) = instance
+            ?: synchronized(LOCK) {
+                instance
+                    ?: createDatabase(
+                        context
+                    )
+                        .also { instance = it }
         }
 
 
